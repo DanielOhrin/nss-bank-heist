@@ -7,7 +7,13 @@ namespace BankHeist
     {
         static void Main(string[] args)
         {
+            // Uncomment the line below to Clear your console when the application runs
+            Console.Clear();
+
+
             Console.WriteLine("Plan Your Heist!");
+            Console.Write("Choose Heist Difficulty: ");
+            int baseDifficulty = int.Parse(Console.ReadLine());
 
             Member teamMemberOne = new Member();
 
@@ -51,11 +57,12 @@ namespace BankHeist
 
             Console.WriteLine($"There are {teamMembers.Count} team members.");
 
+            int successes = 0;
+
             // Each iteration is a new "trial" run
-            for (int i = 0; i < numberOfTrials; i++)
+            for (int i = 0; i < numberOfTrials; i++) // Another way to loop:  for (int i = numberOfTrials; i > 0; i--)
             {
-                // Declare the base skill and difficulty variables
-                int baseDifficulty = 100;
+                // Declare the base skill variable
                 int totalSkillLevel = 0;
 
                 // Calculatge total skill level in team
@@ -76,12 +83,16 @@ namespace BankHeist
                 if (totalSkillLevel >= difficulty)
                 {
                     Console.WriteLine("Success!");
+                    successes++;
                 }
                 else
                 {
                     Console.WriteLine("Fail!");
                 }
             }
+            Console.WriteLine();
+            // Declared successes and not failures, since we can subtract numberOfTrials by successes to get failures
+            Console.WriteLine($"Successes: {successes} | Failures: {numberOfTrials - successes}");
         }
     }
 }
