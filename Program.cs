@@ -8,7 +8,7 @@ namespace BankHeist
         static void Main(string[] args)
         {
             // Uncomment the line below to Clear your console when the application runs
-            Console.Clear();
+            // Console.Clear();
 
 
             Console.WriteLine("Plan Your Heist!");
