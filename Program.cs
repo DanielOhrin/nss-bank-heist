@@ -46,40 +46,42 @@ namespace BankHeist
                 teamMembers.Add(newTeamMember);
             }
 
+            Console.Write("Amount of trials: ");
+            int numberOfTrials = int.Parse(Console.ReadLine());
+
             Console.WriteLine($"There are {teamMembers.Count} team members.");
 
-            // Declare the base skill and difficulty variables
-            int baseDifficulty = 100;
-            int totalSkillLevel = 0;
-
-            // Calculatge total skill level in team
-            foreach (Member member in teamMembers)
+            // Each iteration is a new "trial" run
+            for (int i = 0; i < numberOfTrials; i++)
             {
-                totalSkillLevel += member.SkillLevel;
+                // Declare the base skill and difficulty variables
+                int baseDifficulty = 100;
+                int totalSkillLevel = 0;
+
+                // Calculatge total skill level in team
+                foreach (Member member in teamMembers)
+                {
+                    totalSkillLevel += member.SkillLevel;
+                }
+
+                // Random Number between -10 and 10 (maxValue is exclusive)
+                Random r = new Random();
+                int luck = r.Next(-10, 11);
+
+                // Calculate total difficulty level
+                int difficulty = baseDifficulty + luck;
+
+                // Displays the total skill and difficulty, then replies success if totalSkillLevel is higher or equal to difficulty
+                Console.WriteLine($"Team Skill: {totalSkillLevel} | Difficulty: {difficulty}");
+                if (totalSkillLevel >= difficulty)
+                {
+                    Console.WriteLine("Success!");
+                }
+                else
+                {
+                    Console.WriteLine("Fail!");
+                }
             }
-
-            // Random Number between -10 and 10 (maxValue is exclusive)
-            Random r = new Random();
-            int luck = r.Next(-10, 11);
-
-            // Calculate total difficulty level
-            int difficulty = baseDifficulty + luck;
-
-            // Displays the total skill and difficulty, then replies success if totalSkillLevel is higher or equal to difficulty
-            Console.WriteLine($"Team Skill: {totalSkillLevel} | Difficulty: {difficulty}");
-            if (totalSkillLevel >= difficulty)
-            {
-                Console.WriteLine("Success!");
-            }
-            else
-            {
-                Console.WriteLine("Fail!");
-            }
-
-
-
-
-
         }
     }
 }
