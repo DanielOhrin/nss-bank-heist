@@ -48,13 +48,21 @@ namespace BankHeist
 
             Console.WriteLine($"There are {teamMembers.Count} team members.");
 
-            // Displays each team member's information -- weird indentation because @ symbol is super specific syntax 
-            foreach (Member teamMember in teamMembers)
+            int difficulty = 100;
+            int totalSkillLevel = 0;
+
+            foreach (Member member in teamMembers)
             {
-                Console.WriteLine($@"Team Member:
-    Name: {teamMember.Name}
-    Skill Level: {teamMember.SkillLevel}
-    Courage Factor: {teamMember.CourageFactor}");
+                totalSkillLevel += member.SkillLevel;
+            }
+
+            if (totalSkillLevel >= difficulty)
+            {
+                Console.WriteLine("Success!");
+            }
+            else
+            {
+                Console.WriteLine("Fail!");
             }
         }
     }
